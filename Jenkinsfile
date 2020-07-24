@@ -76,7 +76,7 @@ pipeline {
                     docker build --no-cache -t person .
                     docker tag person:latest msarvala/person:latest
                     docker push msarvala/person:latest
-					docker rmi $(docker images -f “dangling=true” -q)
+					docker rmi $(docker images -f "dangling=true" -q)
                '''
             }
         }
