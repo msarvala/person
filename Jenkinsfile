@@ -45,10 +45,10 @@ pipeline {
             when { branch "master" }
             steps {
                 sh '''
-					docker login -u "amritendudockerhub" -p "Passw1rd"
+					docker login -u "msarvala" -p "malli@1234"
                     docker build --no-cache -t person .
-                    docker tag person:latest amritendudockerhub/person:latest
-                    docker push amritendudockerhub/person:latest
+                    docker tag person:latest msarvala/person:latest
+                    docker push msarvala/person:latest
 					docker rmi person:latest
                 '''
             }
@@ -58,11 +58,11 @@ pipeline {
             when { branch "master" }
             steps {
                 sh '''
-					docker login -u "amritendudockerhub" -p "Passw1rd"
-                    docker pull amritendudockerhub/person:latest
+					docker login -u "msarvala" -p "malli@1234"
+                    docker pull msarvala/person:latest
 					docker stop person
 					docker rm person
-					docker run -p 9090:9090 --name person -t -d amritendudockerhub/person
+					docker run -p 9090:9090 --name person -t -d msarvala/person
 					docker rmi -f $(docker images -q --filter dangling=true)
                 '''
             }
@@ -72,10 +72,10 @@ pipeline {
             when { buildingTag() }
             steps {
                 sh '''
-					docker login -u "amritendudockerhub" -p "Passw1rd"
+					docker login -u "msarvala" -p "malli@1234"
                     docker build --no-cache -t person .
-                    docker tag person:latest amritendudockerhub/person:${TAG_NAME}
-                    docker push amritendudockerhub/person:${TAG_NAME}
+                    docker tag person:latest msarvala/person:${TAG_NAME}
+                    docker push msarvala/person:${TAG_NAME}
 					docker rmi $(docker images -f “dangling=true” -q)
                '''
             }
