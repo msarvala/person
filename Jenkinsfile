@@ -48,7 +48,7 @@ pipeline {
 					docker login -u "msarvala" -p "malli@1234"
                     docker build --no-cache -t person .
                     docker tag person:latest amritendudockerhub/person:latest
-                    docker push amritendudockerhub/person:latest
+                    docker push msarvala/person:latest
 					docker rmi person:latest
                 '''
             }
@@ -75,7 +75,7 @@ pipeline {
 					docker login -u "msarvala" -p "malli@1234"
                     docker build --no-cache -t person .
                     docker tag person:latest amritendudockerhub/person:${TAG_NAME}
-                    docker push amritendudockerhub/person:${TAG_NAME}
+                    docker push msarvala/person:${TAG_NAME}
 					docker rmi $(docker images -f “dangling=true” -q)
                '''
             }
