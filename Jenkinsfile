@@ -69,7 +69,7 @@ pipeline {
         }
 
         stage('Release Docker image') {
-
+            when { buildingTag() }
             steps {
                 sh '''
 					docker login -u "msarvala" -p "malli@1234"
