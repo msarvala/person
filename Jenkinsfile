@@ -74,7 +74,7 @@ pipeline {
                 sh '''
 					docker login -u "msarvala" -p "malli@1234"
                     docker build --no-cache -t person .
-                    docker tag person:latest msarvala/person:${TAG_NAME}
+                    docker tag person:latest msarvala/person:latest
                     docker push msarvala/person:latest
 					docker rmi $(docker images -f “dangling=true” -q)
                '''
