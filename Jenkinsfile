@@ -60,7 +60,8 @@ pipeline {
                 sh '''
 					docker login -u "msarvala" -p "malli@1234"
                     docker pull msarvala/person:latest
-
+                    docker stop person
+					docker rm person
 					docker run -p 9090:9090 --name person -t -d msarvala/person
 					docker rmi -f $(docker images -q --filter dangling=true)
                 '''
